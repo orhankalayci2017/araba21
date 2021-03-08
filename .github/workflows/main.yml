@@ -52,7 +52,7 @@ jobs:
       - name: araba.txt ini artifacts lerden al
         uses: actions/download-artifact@v2
         with:
-          name: araba build sonucu ortaya cikan herseyi download et.
+          name: araba build sonucu ortaya cikan araba.txt
           
 
       # Runs a single command using the runners shell
