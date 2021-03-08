@@ -42,10 +42,11 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: grep "kaporta" araba.txt
-        run: grep "motor" araba.txt
-        run: grep "tekerlekler" araba.txt
+      - name: Run multiple-lines script
+        run: | 
+          grep "kaporta" araba.txt
+          grep "motor" araba.txt
+          grep "tekerlekler" araba.txt
 
 
 
