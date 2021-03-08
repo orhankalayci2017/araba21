@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -33,14 +33,27 @@ jobs:
           echo "motor" >> araba.txt
           echo "tekerlekler" >> araba.txt
 
+      - name: araba.txt -> artifacts lere koy
+        uses: actions/upload-artifact@v2
+        with:
+          name: araba build sonucu ortaya cikan araba.txt
+          path: araba.txt 
+
   test:
+    needs: build 
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      - name: araba.txt ini artifacts lerden al
+        uses: actions/download-artifact@v2
+        with:
+          name: araba build sonucu ortaya cikan araba.txt
+          path: araba.txt 
 
       # Runs a single command using the runners shell
       - name: Run multiple-lines script
