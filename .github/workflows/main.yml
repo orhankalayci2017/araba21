@@ -37,6 +37,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: araba build sonucu ortaya cikan araba.txt
+          path: ./
 
   test:
     needs: build 
